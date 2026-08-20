@@ -1,0 +1,142 @@
+---
+name: philosophy-review
+description: "Run a Four Questions philosophy review before executing a plan or technical decision. Do not implement first. Use for architecture choices, stack changes, large refactors, irreversible operations, and high-blast-radius decisions. Triggers: philosophy review, four questions, 哲学四问, 哲学审查, 先审再做, 这个方案靠谱吗, architecture review before coding."
+---
+
+# Philosophy Review / 哲学审查
+
+Do not execute the plan yet. Review it first with the Four Questions.
+
+Match the user's language. If the user writes in Chinese, write the review in Chinese. If in English, write in English. If mixed, default to Chinese.
+
+If you cannot find a real problem, say the plan has no obvious holes. Do not invent issues to fill the template.
+
+## When to use / 何时使用
+
+Use when the user asks to review a plan, or when the next step is high-impact:
+
+- Architecture or stack choice / 架构选型、技术栈更换
+- Large refactor / 重大重构
+- Irreversible or expensive operations / 不可逆或代价很高的操作（删数据、迁库、改权限、公开发布）
+- “Should we do this?” before coding / 动手前问值不值得做
+
+## When not to use / 何时不用
+
+Skip this skill for small, reversible edits: typo fixes, copy tweaks, adding a log line, formatting. Say so in one sentence and do the work.
+
+Do not use this skill to block the user. A review is a filter, not a veto theater.
+
+## Workflow / 流程
+
+```
+Task Progress:
+- [ ] Restate the plan in one sentence
+- [ ] Answer Question 1: What is this, really?
+- [ ] Answer Question 2: Why should I believe it?
+- [ ] Answer Question 3: How was it inferred?
+- [ ] Answer Question 4: Even if true, is it right for us?
+- [ ] Verdict: proceed / proceed with conditions / verify first / do not proceed
+```
+
+1. Restate the plan in one sentence before judging it. If the plan is vague, ask one clarifying question. Do not ask a long questionnaire.
+2. Answer all four questions. Keep each answer short. Name facts vs assumptions.
+3. End with a verdict. If the verdict is “proceed”, start the work in the same turn unless the user only asked for a review.
+
+---
+
+## 中文：哲学四问
+
+### 第一问：这到底是什么？
+
+- 这个方案真正要解决的问题是什么？用谁的痛、什么场景来写，不要用口号。
+- 关键概念有没有定义清楚（范围、成功标准、非目标）？
+- 如果去掉所有时髦词，还剩下什么？
+
+### 第二问：我凭什么相信？
+
+- 依据的事实是什么？来自哪里？
+- 哪些是事实，哪些是假设，哪些只是偏好？
+- 有没有被忽略的数据、反例、失败案例或运行时风险？
+
+### 第三问：它是怎么推出来的？
+
+- 从证据到结论，中间有哪些隐藏前提？
+- 有没有逻辑跳跃、以偏概全、把相关当因果、把个别案例当成普遍规律？
+- 有没有把“别人用过”直接当成“我们应该用”？
+
+### 第四问：即使它成立，适合我吗？
+
+- 符合当前项目的目标、资源和能力吗？
+- 代价是什么：时间、金钱、性能、维护成本、锁定、技术债、可逆性？
+- 目标冲突时，应该优先保护什么？
+- 有没有更小、可逆的验证步骤，能在全面铺开前证伪它？
+
+### 结论（必须输出）
+
+- 最成立的地方
+- 最大的问题（没有就写“没有明显漏洞”）
+- 需要验证的关键假设（最多 3 条）
+- 是否继续推进：推进 / 有条件推进 / 先验证再推进 / 不推进
+- 若有条件或先验证：下一条最小动作是什么
+
+---
+
+## English: The Four Questions
+
+### 1. What is this, really?
+
+- What problem does this plan actually solve? Name the user and the situation, not a slogan.
+- Are the key terms defined (scope, success, non-goals)?
+- If you strip the buzzwords, what is left?
+
+### 2. Why should I believe it?
+
+- What facts support it, and where do they come from?
+- Which claims are facts, which are assumptions, which are taste?
+- What data, counterexamples, failed cases, or runtime risks are missing?
+
+### 3. How was it inferred?
+
+- What hidden premises sit between the evidence and the conclusion?
+- Any jumps, over-generalization, correlation-as-cause, or one anecdote treated as a law?
+- Is “someone else used this” being treated as “we should use this”?
+
+### 4. Even if it is true, is it right for us?
+
+- Does it fit this project’s goals, resources, and skill?
+- What is the cost: time, money, performance, maintenance, lock-in, debt, reversibility?
+- If goals conflict, what must be protected first?
+- Is there a smaller, reversible test that could falsify it before a full rollout?
+
+### Verdict (required)
+
+- Where the plan is strongest
+- The biggest problem (or “no obvious holes”)
+- Key assumptions to verify (max 3)
+- Decision: proceed / proceed with conditions / verify first / do not proceed
+- If conditional or verify-first: the smallest next action
+
+---
+
+## Output shape / 输出形态
+
+Lead with the verdict. Then the four answers. Then the smallest next action.
+
+Keep the whole review short enough to read on a phone. One tight paragraph per question is enough. Bullet lists beat essays.
+
+Do not pad. An honest “this is fine; here is the one assumption to check” is a complete review.
+
+## Intensity / 审查力度
+
+- **Light**: reversible, local, one module. Four short bullets + verdict.
+- **Full**: stack change, data migration, public launch, security/permissions, anything hard to undo. Use the full template.
+
+If blast radius is unclear, use Full.
+
+## Hard rules / 硬规则
+
+- Do not start implementing during the review unless the user asked only for a review *and* the verdict is proceed — then implement after the verdict in the same turn when they asked you to do the work.
+- If they only said “review this”, stop after the verdict. Do not sneak in a refactor.
+- Do not moralize. Do not mock the plan. Steelman it first, then cut.
+- Prefer a cheap test over a long argument.
+- Never claim certainty you do not have. Mark guesses as guesses.
