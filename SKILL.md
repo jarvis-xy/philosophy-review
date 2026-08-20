@@ -5,11 +5,11 @@ description: "Run a Four Questions philosophy review before executing a plan or 
 
 # Philosophy Review / 哲学审查
 
-Do not execute the plan yet. Review it first with the Four Questions.
+If the next step is a large or hard-to-undo change, pause before editing. Walk the plan through the four questions below, then give a verdict.
 
-Match the user's language. If the user writes in Chinese, write the review in Chinese. If in English, write in English. If mixed, default to Chinese.
+Write the review in the user's language. Chinese in, Chinese out. English in, English out. Mixed → Chinese.
 
-If you cannot find a real problem, say the plan has no obvious holes. Do not invent issues to fill the template.
+If the plan has no real hole, say so. Do not invent problems to fill a template.
 
 ## When to use / 何时使用
 
@@ -24,7 +24,7 @@ Use when the user asks to review a plan, or when the next step is high-impact:
 
 Skip this skill for small, reversible edits: typo fixes, copy tweaks, adding a log line, formatting. Say so in one sentence and do the work.
 
-Do not use this skill to block the user. A review is a filter, not a veto theater.
+Do not stall a plan that already looks sound. The review should change the next action or get out of the way.
 
 ## Scenarios / 使用场景
 

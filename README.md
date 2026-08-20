@@ -2,9 +2,9 @@
 
 [中文](#中文) · [English](#english)
 
-动手前先用「哲学四问」审查方案。适合 Claude Code、Codex、Cursor。
+Agent 很会写代码，但不总记得先问「这件事该不该做」。装上以后，大改动手前会先过一遍方案。Claude Code、Codex、Cursor 都能用。
 
-Review a plan with the Four Questions before you execute it. Works with Claude Code, Codex, and Cursor.
+Agents are good at writing code. They are worse at asking whether the work should happen. After you install this, a big change gets a pass over the plan first. Claude Code, Codex, and Cursor.
 
 ```bash
 npx skills add jarvis-xy/philosophy-review -g -y
@@ -14,7 +14,9 @@ npx skills add jarvis-xy/philosophy-review -g -y
 
 ## 中文
 
-别一上来就执行。先问四件事：这到底是什么、我凭什么相信、它是怎么推出来的、即使成立适不适合我。
+你跟 Agent 说「把数据库换了」或「按这篇教程重构」，它常常直接开写。过两天才发现：要解决的问题没说清，依据是一篇帖子，而且并不适合你现在的体量。
+
+这个 skill 让它先停一下。停不是开会，就是把方案过四遍——到底要干什么、凭什么觉得行、中间有没有跳、放到你这个项目里划不划算——然后给一个能不能动手的结论。
 
 ### 使用场景
 
@@ -43,7 +45,7 @@ npx skills add jarvis-xy/philosophy-review -g -y
 
 一次有用的审查，会改变明天做什么。如果读完还是不知道下一步，这段审查就太空了。
 
-找不到真实问题，就直说没有明显漏洞，不要为了凑数硬找。审查是过滤器，不是为了显得谨慎而拦人。
+找不到真实问题，就直说没有明显漏洞，不要为了凑数硬找。小改动不走这套，有把握就直接做。
 
 ### 安装
 
@@ -93,7 +95,9 @@ git clone https://github.com/jarvis-xy/philosophy-review.git ~/.claude/skills/ph
 
 ## English
 
-Do not execute first. Ask four things: what this really is, why you should believe it, how it was inferred, and even if true, whether it fits you.
+Tell an agent to switch the database or follow a tutorial rewrite, and it often starts editing. Two days later the problem was never named, the evidence was one blog post, and the plan does not fit the size of the project.
+
+This skill makes it pause. Not a meeting — just four passes over the plan: what you are actually doing, why it might be true, where the reasoning jumps, and whether it fits *this* repo. Then it says whether to start.
 
 ### When to use it
 
@@ -122,7 +126,7 @@ It does not guarantee a correct call. It makes the next step cheaper and clearer
 
 A useful review changes tomorrow's action. If you still don't know the next step, the review was too vague.
 
-If there is no real problem, it should say there are no obvious holes. The review is a filter, not veto theater.
+If there is no real problem, it should say there are no obvious holes. Skip this for small edits. If the plan already looks sound, just do the work.
 
 ### Install
 
