@@ -1,4 +1,4 @@
 interface:
   display_name: "Philosophy Review"
-  short_description: "Four Questions review before you execute a plan"
-  default_prompt: "Use $philosophy-review on this plan before doing any work. Answer the Four Questions, then give a verdict: proceed, proceed with conditions, verify first, or do not proceed."
+  short_description: "Four Questions review before a high-impact plan; cheaper next step, clear verdict"
+  default_prompt: "Use $philosophy-review on this plan before doing any work. Treat it as a high-impact decision. Answer the Four Questions, name facts vs assumptions, and give a verdict: proceed, proceed with conditions, verify first, or do not proceed, plus the smallest next action."

@@ -1,6 +1,6 @@
 ---
 name: philosophy-review
-description: "Run a Four Questions philosophy review before executing a plan or technical decision. Do not implement first. Use for architecture choices, stack changes, large refactors, irreversible operations, and high-blast-radius decisions. Triggers: philosophy review, four questions, 哲学四问, 哲学审查, 先审再做, 这个方案靠谱吗, architecture review before coding."
+description: "Run a Four Questions philosophy review before executing a plan or technical decision. Do not implement first. Use for architecture choices, stack changes, large refactors, irreversible operations, copying someone else's stack, and high-blast-radius decisions. Expected effect: separate facts from assumptions, find a cheaper test, and give a proceed / wait / stop verdict. Triggers: philosophy review, four questions, 哲学四问, 哲学审查, 先审再做, 这个方案靠谱吗, 使用场景, architecture review before coding."
 ---
 
 # Philosophy Review / 哲学审查
@@ -25,6 +25,35 @@ Use when the user asks to review a plan, or when the next step is high-impact:
 Skip this skill for small, reversible edits: typo fixes, copy tweaks, adding a log line, formatting. Say so in one sentence and do the work.
 
 Do not use this skill to block the user. A review is a filter, not a veto theater.
+
+## Scenarios / 使用场景
+
+Typical situations. If the user's request matches one of these, run this skill before coding:
+
+| Scene | Example |
+|---|---|
+| Swap the stack | Postgres → Mongo, REST → GraphQL, Next → something else, because a post said it is faster |
+| Agent proposes a big rewrite | “Let me rebuild this into a monorepo / microservices / clean architecture” |
+| Copy a popular setup | “Everyone uses this starter / this SaaS / this agent workflow, let's install it” |
+| Irreversible ops | Drop a table, migrate production data, change auth, open a public API |
+| Ship something public | Launch a paid feature, publish a dataset, change a live prompt that users already depend on |
+| Two options in a fight | Team or user is stuck between A and B and wants a decision, not more code |
+| Spend or lock-in | New cloud, new model vendor, new paid dependency, a 2-week refactor “to save time later” |
+
+If none of these apply and the change is local and reversible, skip the review.
+
+## What it is for / 能带来什么
+
+This skill is not a guarantee of a correct decision. It is for making the next step cheaper and clearer:
+
+- Name the real problem in one sentence, so work does not start from a slogan
+- Split facts / assumptions / taste, so a hot take does not become a rewrite
+- Surface hidden premises (“they used it” ≠ “we should use it”)
+- Prefer a small reversible test over a full rollout
+- End with one verdict: proceed, proceed with conditions, verify first, or stop
+- If the plan is fine, say so quickly and do not stall
+
+A useful review changes the next action. If the output would not change what happens tomorrow, it was too vague.
 
 ## Workflow / 流程
 

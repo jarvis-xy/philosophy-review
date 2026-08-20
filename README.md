@@ -16,16 +16,34 @@ npx skills add jarvis-xy/philosophy-review -g -y
 
 别一上来就执行。先问四件事：这到底是什么、我凭什么相信、它是怎么推出来的、即使成立适不适合我。
 
-适用于：
+### 使用场景
 
-- 架构选型、技术栈更换
-- 重大重构
-- 删数据、迁库、改权限、公开发布等不可逆或代价很高的操作
-- 动手前问「这个方案值不值得做」
+| 场景 | 你可能会说 |
+|---|---|
+| 换技术栈 | 「看到一篇文章说 Mongo 更快，要把 Postgres 换掉」 |
+| Agent 要大重构 | 「它提议先改成微服务 / monorepo / 整套 clean architecture」 |
+| 照搬别人的方案 | 「这个 starter / SaaS / Agent 工作流很火，我们装上吧」 |
+| 不可逆操作 | 「删表、迁生产数据、改登录、把接口公开」 |
+| 要对外上线 | 「付费功能要上了」或「线上提示词要改，已经有用户在用」 |
+| 两个方案吵不清 | 「A 和 B 选哪个，先别写代码」 |
+| 要花钱或被锁定 | 「上新云、换模型供应商、加付费依赖、花两周重构换以后省事」 |
 
-小改动（错字、文案、加一行日志）不要走这套。审查是过滤器，不是为了显得谨慎而拦人。
+错字、改文案、加一行日志，不要走这套。
 
-找不到真实问题，就直说没有明显漏洞，不要为了凑数硬找。
+### 能带来什么
+
+不保证决策正确。更可能发生的是：下一步更便宜、更清楚。
+
+- 把口号收成一句话问题，避免从热词开工
+- 把事实、假设、口味分开，少被一篇帖子带着整仓重写
+- 拆出隐藏前提：「别人用过」不等于「我们该用」
+- 在全面铺开前，先找到一个可逆的小验证
+- 给明确结论：推进 / 有条件推进 / 先验证再推进 / 不推进
+- 方案没漏洞就直说，不靠审查拖延
+
+一次有用的审查，会改变明天做什么。如果读完还是不知道下一步，这段审查就太空了。
+
+找不到真实问题，就直说没有明显漏洞，不要为了凑数硬找。审查是过滤器，不是为了显得谨慎而拦人。
 
 ### 安装
 
@@ -77,16 +95,34 @@ git clone https://github.com/jarvis-xy/philosophy-review.git ~/.claude/skills/ph
 
 Do not execute first. Ask four things: what this really is, why you should believe it, how it was inferred, and even if true, whether it fits you.
 
-Use it for:
+### When to use it
 
-- Architecture or stack changes
-- Large refactors
-- Irreversible or expensive moves (deleting data, migrating a database, changing permissions, public launch)
-- “Should we do this?” before coding
+| Scene | You might say |
+|---|---|
+| Swap the stack | “A post said Mongo is faster, let's leave Postgres” |
+| Agent wants a rewrite | “It wants microservices / a monorepo / clean architecture first” |
+| Copy a popular setup | “This starter / SaaS / agent workflow is hot, install it” |
+| Irreversible ops | Drop a table, migrate prod data, change auth, open a public API |
+| Ship in public | Launch a paid feature, or change a live prompt users already depend on |
+| Two options, no decision | “Pick A or B. Don't write code yet.” |
+| Spend or lock-in | New cloud, new model vendor, paid dependency, a 2-week refactor “to save time later” |
 
-Skip it for small reversible edits. The review is a filter, not veto theater.
+Skip typos, copy tweaks, and one-line logs.
 
-If you cannot find a real problem, say there are no obvious holes. Do not invent issues to fill the template.
+### What you get
+
+It does not guarantee a correct call. It makes the next step cheaper and clearer.
+
+- One-sentence problem, so you don't start from a slogan
+- Facts / assumptions / taste split, so one post doesn't trigger a rewrite
+- Hidden premises named: “they used it” ≠ “we should”
+- A small reversible test before a full rollout
+- A verdict: proceed / proceed with conditions / verify first / stop
+- If the plan is fine, it says so and does not stall
+
+A useful review changes tomorrow's action. If you still don't know the next step, the review was too vague.
+
+If there is no real problem, it should say there are no obvious holes. The review is a filter, not veto theater.
 
 ### Install
 
